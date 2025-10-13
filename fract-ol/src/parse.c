@@ -6,7 +6,7 @@
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:40:00 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/05/04 12:35:09 by mrapp-he         ###   ########.fr       */
+/*   Updated: 2025/10/13 20:22:28 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ void	parsing(int ac, char **av)
 		set_resolution(WIDTH, HEIGTH);
 	if (ac > 5 && dt->type == 'j')
 		db()->start = new_complex(parse_complex(av[5]), parse_complex(av[6]));
-	else
+	else if (ac > 5 && dt->type != 'j')
 		exit(input_error());
 }
