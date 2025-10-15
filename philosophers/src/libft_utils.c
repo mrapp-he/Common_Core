@@ -6,59 +6,43 @@
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 23:09:52 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/10/13 18:33:37 by mrapp-he         ###   ########.fr       */
+/*   Updated: 2025/10/15 20:13:00 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_atoi(const char *nbr)
+t_ull	ft_atoi_parse(t_str	input)
 {
-	int	res;
-	int	sgn;
+	t_ull	res;
+	t_ull	i;
 
 	res = 0;
-	sgn = 1;
-	while (*nbr == ' ' || (*nbr >= '\t' && *nbr <= '\r'))
-		nbr++;
-	if (*nbr == '+' || *nbr == '-')
+	i = 0;
+	while (input[i] == ' ' || (input[i] >= '\t' && input[i] <= '\r'))
+		i++;
+	if (input[i] == '+' || input[i] == '-')
 	{
-		sgn = (*nbr == '+') - (*nbr == '-');
-		nbr++;
+		if (input[i] == '-')
+			table()->has_error = true;
+		i++;
 	}
-	while (*nbr >= '0' && *nbr <= '9')
+	while (input[i] >= '0' && input[i] <= '9')
 	{
-		res = (res * 10) + (*nbr - '0');
-		nbr++;
+		res = (res * 10) + (input[i] - '0');
+		i++;
 	}
-	return (res * sgn);
+	if (input[i])
+		table()->has_error = true;
+	return (res);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_strcmp(t_str s1, t_str s2)
 {
-	char	*start;
+	int	i;
 
-	start = dest;
-	if (!dest && !src)
-		return (NULL);
-	while (n--)
-		*(unsigned char *)dest++ = *(unsigned char *)src++;
-	return (start);
-}
-
-int	ft_memcmp(const void *mem1, const void *mem2, size_t n)
-{
-	unsigned char	*temp_mem1;
-	unsigned char	*temp_mem2;
-
-	temp_mem1 = (unsigned char *)mem1;
-	temp_mem2 = (unsigned char *)mem2;
-	while (n--)
-	{
-		if (*temp_mem1 != *temp_mem2)
-			return (*temp_mem1 - *temp_mem2);
-		temp_mem1++;
-		temp_mem2++;
-	}
-	return (0);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

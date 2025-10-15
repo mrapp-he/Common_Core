@@ -6,7 +6,7 @@
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 19:21:57 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/10/13 19:44:15 by mrapp-he         ###   ########.fr       */
+/*   Updated: 2025/10/15 18:06:10 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,37 @@
 
 void	are_they_full(void)
 {
+	bool			is_full;
 	unsigned int	i;
-	unsigned int	n;
 	unsigned int	f;
-	t_mtx			full;
 	t_philo			*philo;
 
 	i = -1;
 	f = 0;
-	n = table()->n_philo;
 	philo = table()->philos;
-	pthread_mutex_init(&full, NULL);
-	while (++i < n)
+	is_full = false;
+	pthread_mutex_lock(&table()->full_lock);
+	if (table()->all_full == false)
 	{
-		if (mutex_get(full, &philo[i].full, sizeof(bool)) == true)
-			f++;
+		while (++i < table()->n_philo)
+		{
+			pthread_mutex_lock(&philo[i].philo_lock);
+			is_full = philo[i].full;
+			pthread_mutex_unlock(&philo[i].philo_lock);
+			if (is_full == true)
+				f++;
+		}
+		if (f == table()->n_philo)
+			table()->all_full = true;
 	}
-	if (f == n)
-		mutex_set(full, &table()->full_philos, &(bool){true}, sizeof(bool));
-	pthread_mutex_destroy(&full);
+	pthread_mutex_unlock(&table()->full_lock);
+}
+
+bool	end_simulation(void)
+{
+	if (mutex_get(&table()->death_lock, &table()->dead))
+		return (true);
+	else if (mutex_get(&table()->full_lock, &table()->all_full))
+		return (true);
+	return (false);
 }

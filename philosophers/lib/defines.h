@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 23:10:22 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/10/15 20:05:15 by mrapp-he         ###   ########.fr       */
+/*   Created: 2025/10/14 11:10:57 by mrapp-he          #+#    #+#             */
+/*   Updated: 2025/10/15 19:27:53 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef DEFINES_H
+# define DEFINES_H
 
-void	print_error(int error)
-{
-	if (error == ERR_INPUT)
-		write(2, "Invalid Input!\n", 16);
-	else if (error == ERR_ALLOC)
-		write(2, "Allocation Failed!\n", 20);
-	else if (error == ERR_ALONE)
-		printf("%lld 1 %s", what_time(), DIE_MSG);
-	else if (error == ERR_TCREATE)
-	{
-		write(2, "Failed to create a thread!\n", 28);
-		destroy_table();
-	}
-}
+# include "philo.h"
+
+# define EAT 0
+# define DIE 1
+# define SLEEP 2
+# define THINK 3
+# define ERR_INPUT 0
+# define ERR_ALLOC 1
+# define ERR_ALONE 2
+# define ERR_TCREATE 3
+# define DIE_MSG "died\n"
+# define EAT_MSG "is eating\n"
+# define SLEEP_MSG "is sleeping\n"
+# define THINK_MSG "is thinking\n"
+# define FORK_MSG "has taken a fork\n"
+
+#endif
