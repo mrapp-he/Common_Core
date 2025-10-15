@@ -6,7 +6,7 @@
 #    By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/27 16:25:42 by mrapp-he          #+#    #+#              #
-#    Updated: 2025/05/19 17:57:50 by mrapp-he         ###   ########.fr        #
+#    Updated: 2025/05/30 14:05:41 by mrapp-he         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fractol
 SRCS = src/fractol.c src/graphics.c src/complex_utils.c src/errors.c src/fractals.c src/parse.c src/utils.c src/keys-1.c src/keys-2.c src/mouse.c
 OBJ_DIR = build
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
-CC = gcc
+CC = cc
 CFLAGS = -g -Wall -Wextra -Werror -Ofast
 LIBMLX = -Llib/minilibx-linux -lmlx -lXext -lX11 -lm
 INCLUDE = -Ilib/minilibx-linux -Ilib
