@@ -1,3 +1,0 @@
-[submodule "minishell"]
-	path = minishell
-	url = git@github.com:Frank-Person/minishell.git
