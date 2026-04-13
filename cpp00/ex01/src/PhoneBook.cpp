@@ -6,11 +6,15 @@
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 14:59:44 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/11/30 16:31:26 by mrapp-he         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:51:59 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+PhoneBook::PhoneBook() : cols(20), _idx(0), _max_idx(8) {}
+
+PhoneBook::~PhoneBook() {}
 
 void PhoneBook::_RequestContact(PhoneBook& new_phonebook) {
 	std::string message[5] = {FIRST_NAME, LAST_NAME, NICKNAME, PHONE_NUM, SECRET};
@@ -158,21 +162,4 @@ void PhoneBook::RequestAction(PhoneBook& new_phonebook) {
 			(std::cerr << GREEN NOT_FOUND, ft_sleep(2), std::cerr << SHOW RESET);
 		}
 	}
-}
-
-int	main(int ac, char **av) {
-	PhoneBook new_phonebook;
-	
-	(void)av;
-	ft_set_format(new_phonebook);
-	if (ac != 1) {
-		(std::cerr << CLEAR HIDE, ft_center_rows(new_phonebook.rows / 3));
-		ft_center_cols(new_phonebook.cols / 2 - 14); 
-		return (std::cerr << GREEN ERR_ARG RESET, 1);
-	}
-	(std::cout << HIDE CLEAR, ft_center_rows(new_phonebook.rows / 3)); 
-	ft_center_cols(new_phonebook.cols / 2 - 14);
-	(std::cout << GREEN WLCM_MSG RESET << std::endl, ft_sleep(2));
-	new_phonebook.RequestAction(new_phonebook);
-	return (0);
 }

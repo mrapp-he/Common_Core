@@ -6,12 +6,12 @@
 #    By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/26 20:38:33 by mrapp-he          #+#    #+#              #
-#    Updated: 2025/11/04 11:23:35 by mrapp-he         ###   ########.fr        #
+#    Updated: 2026/04/13 18:52:59 by mrapp-he         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PhoneBook
-SRCS = src/PhoneBook.cpp src/Contact.cpp src/HandleClass.cpp src/Utils.cpp
+SRCS = main.cpp src/PhoneBook.cpp src/Contact.cpp src/utils.cpp
 OBJ_DIR = build
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 CPP = c++

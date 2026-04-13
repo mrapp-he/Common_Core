@@ -6,11 +6,15 @@
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 15:01:24 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/11/04 17:58:13 by mrapp-he         ###   ########.fr       */
+/*   Updated: 2026/04/13 18:51:26 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
+Contact::Contact() {}
+
+Contact::~Contact() {}
 
 void Contact::SaveContact(Contact& phonebook_slot, std::string* info, int size) {
 	for (int i = 0; i < size; ++i) {
