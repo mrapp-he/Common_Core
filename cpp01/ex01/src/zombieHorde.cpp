@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 19:58:11 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/10/25 15:41:58 by mrapp-he         ###   ########.fr       */
+/*   Created: 2026/04/10 10:50:13 by mrapp-he          #+#    #+#             */
+/*   Updated: 2026/04/11 11:04:08 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "Zombie.hpp"
 
-char	*ft_strtrim(char const *str, char const *st)
-{
-	char	*trm;
-	size_t	bgn;
-	size_t	end;
-
-	if (!str || !st)
+Zombie* zombieHorde(int n, std::string name) {
+	if (n <= 0)
 		return (NULL);
-	bgn = 0;
-	end = ft_strlen(str);
-	while (str[bgn] && ft_strchr(st, str[bgn]))
-		bgn++;
-	while (end > bgn && ft_strchr(st, str[end - 1]))
-		end--;
-	return (ft_substr(trm, bgn, (bgn - end) + 1));
+	Zombie* horde = new Zombie[n];
+	for (int i = 0; i < n; ++i) {
+		std::ostringstream id;
+		(id << i, horde[i].zombieName(name + id.str()));
+	}
+	return (horde);
 }

@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 19:58:11 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/10/25 15:41:58 by mrapp-he         ###   ########.fr       */
+/*   Created: 2025/11/10 14:03:45 by mrapp-he          #+#    #+#             */
+/*   Updated: 2026/04/10 10:02:24 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-char	*ft_strtrim(char const *str, char const *st)
+# include <string>
+# include <vector>
+# include <iostream>
+
+class Zombie
 {
-	char	*trm;
-	size_t	bgn;
-	size_t	end;
+private:
+	std::string _name;
+public:
+	Zombie(std::string name);
+	~Zombie();
+	void announce(void);
+};
 
-	if (!str || !st)
-		return (NULL);
-	bgn = 0;
-	end = ft_strlen(str);
-	while (str[bgn] && ft_strchr(st, str[bgn]))
-		bgn++;
-	while (end > bgn && ft_strchr(st, str[end - 1]))
-		end--;
-	return (ft_substr(trm, bgn, (bgn - end) + 1));
-}
+void randomChump(std::string name);
+Zombie* newZombie(std::string name);
+
+#endif
