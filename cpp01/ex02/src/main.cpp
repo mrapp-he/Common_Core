@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 19:58:11 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/10/25 15:41:58 by mrapp-he         ###   ########.fr       */
+/*   Created: 2026/04/11 12:04:43 by mrapp-he          #+#    #+#             */
+/*   Updated: 2026/04/13 12:13:26 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string>
+#include <iostream>
 
-char	*ft_strtrim(char const *str, char const *st)
-{
-	char	*trm;
-	size_t	bgn;
-	size_t	end;
-
-	if (!str || !st)
-		return (NULL);
-	bgn = 0;
-	end = ft_strlen(str);
-	while (str[bgn] && ft_strchr(st, str[bgn]))
-		bgn++;
-	while (end > bgn && ft_strchr(st, str[end - 1]))
-		end--;
-	return (ft_substr(trm, bgn, (bgn - end) + 1));
+int main(void) {
+	std::string str = "HI THIS IS BRAIN";
+	std::string* strPtr = &str;
+	std::string& strRef = str;
+	
+	std::cout << &str << " " << strPtr << " " << &strRef << " " << str << " " << *strPtr << " " << strRef << std::endl;
+	return (0);
 }

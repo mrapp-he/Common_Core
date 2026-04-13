@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrapp-he <mrapp-he@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 19:58:11 by mrapp-he          #+#    #+#             */
-/*   Updated: 2025/10/25 15:41:58 by mrapp-he         ###   ########.fr       */
+/*   Created: 2025/11/10 14:05:08 by mrapp-he          #+#    #+#             */
+/*   Updated: 2026/04/10 10:30:45 by mrapp-he         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "Zombie.hpp"
 
-char	*ft_strtrim(char const *str, char const *st)
-{
-	char	*trm;
-	size_t	bgn;
-	size_t	end;
+Zombie::Zombie(std::string name) {
+	_name = name;
+}
 
-	if (!str || !st)
-		return (NULL);
-	bgn = 0;
-	end = ft_strlen(str);
-	while (str[bgn] && ft_strchr(st, str[bgn]))
-		bgn++;
-	while (end > bgn && ft_strchr(st, str[end - 1]))
-		end--;
-	return (ft_substr(trm, bgn, (bgn - end) + 1));
+Zombie::~Zombie() {
+	std::cout << this->_name << ": As returned to his grave!" << std::endl;
+}
+
+void Zombie::announce(void) {
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
